@@ -47,6 +47,11 @@ const removeTaskInLocalStorage = (list_item) => {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
+const removeAllTaskInLocalStorage = () => {
+  // localStorage.removeItem("tasks");
+  localStorage.clear();
+};
+
 const getTaskFromLocalStorage = (event) => {
   let tasks;
   if (localStorage.getItem("tasks") === null) {
@@ -143,6 +148,7 @@ const removeAllTask = (event) => {
   if (taskList.childElementCount > 0) {
     if (confirm("Are you damn sure")) {
       taskList.innerHTML = "";
+      removeAllTaskInLocalStorage();
     }
   } else {
     alert("You don't have any task to remove!!!");
